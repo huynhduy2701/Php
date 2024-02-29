@@ -1,0 +1,166 @@
+/* .nav{
+    display: flex;
+    justify-content: center;
+    background-color: #b22830;
+    padding: 20px;
+    
+}
+
+ul >li {
+    list-style: none;
+    
+}
+li>a{
+    text-decoration: none; 
+    color:white;
+   
+}
+.dropdown{
+    padding-right: 30px;
+}
+
+li:hover ul{
+    display: block;
+}
+li ul{
+    display: none;
+} */
+
+.header{
+   background-color:#b22830 ;
+  
+}
+
+nav{
+   display: flex;
+   justify-content: space-between;
+   justify-items:center ;
+   margin: auto;
+}
+/* .logo_img{
+  width: 100px;
+  padding-left: 100px; 
+  padding-bottom: 0px;
+} */
+.menu_nav{
+   display: flex;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   margin: auto;
+  z-index: 1000;
+   
+}
+.menu_nav li{
+  position: relative; 
+}
+.menu_nav>li:hover>a {
+  color:#4F4F4F
+}
+.menu_nav li a{
+   color: white;
+   display: block;
+   padding: 18px 20px;
+   text-decoration: none;
+
+   
+}
+
+.menu_nav ul.dropdown{
+  position: absolute;
+  background: #53382c;
+  padding: 15px 0px;
+  list-style: none;
+  width: 200px;
+  display: none;
+  
+  
+}
+.menu_nav li:hover>ul.dropdown{
+  display: block;
+  color: white;
+  
+}
+.menu_nav ul.dropdown a{
+   padding: 8px 20px;
+   border-bottom: 1px solid black;
+}
+.menu_nav ul.dropdown li:hover a{
+   border-bottom: 1px solid white;
+   color: #DDDDDD;
+}
+.menu_nav ul.dropdown li:last-child a{
+   border: none;
+}
+
+/* thiet lap khi hover border */
+.menu_nav>li>a{
+   position: relative;
+}
+
+.menu_nav>li>a::before{
+   content:  "";
+   height: 3px;
+   width: 0%;
+   background-color: aqua;
+   position: absolute;
+   bottom: 0px;
+   left: 0px;
+   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+} 
+.menu_nav>li:hover>a::before{
+  
+   width: 100%;
+   
+}
+
+
+.fb_icon a {
+  display: inline-block; /* Để có thể áp dụng height và width */
+  overflow: hidden; /* Đảm bảo không có nội dung bên ngoài phần tử được hiển thị */
+}
+
+.fb_icon a i {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+  display: block; /* Đảm bảo phần tử i có chiều cao và chiều rộng của phần tử a */
+  height: 100%; /* Chiều cao 100% của phần tử a */
+  width: 100%; /* Chiều rộng 100% của phần tử a */
+}
+
+.fb_icon a:hover i {
+  transform: translateY(-10px);
+}
+a.tensp_a {
+  text-decoration: none !important;
+  margin-top: 20px;
+}
+.my_sp{
+  border: 1px solid #CFCFCF;
+  width: 200px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; 
+}
+.my_sp:hover {
+  transform: translateY(-5px); /* Adjust the lifting distance as needed */
+}
+.z-depth-1-half{
+  border: 1px solid #eeeeee;
+  margin-top: 10px;
+}
+.tensp_a span{
+  display: block;
+  padding-top: 20px ;
+}
+.tensp_a:hover>span  {
+  color: #b22830;
+}
+.img-fluid{
+  width: 150px;
+  align-items: center;
+}
+
+.btn-danger{
+  background-color:#b22830 ;
+}
