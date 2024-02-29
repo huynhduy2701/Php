@@ -33,7 +33,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                     $totalAmount = 0;
                     $j = 0;
                   
-                                var_dump($_SESSION['cart']);
+                                // var_dump($_SESSION['cart']);
                            
                     foreach ($_SESSION['cart'] as $key => $item) :
                         $j++;
@@ -71,6 +71,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                     <td colspan="2">
                         <button type="submit" class="btn btn-primary" name="updateCart">Cập nhật</button>
                         <a type="button" class="btn btn-primary" onclick="proceedToPayment()">Thanh toán</a>
+                        <a type="button" class="btn btn-danger" href="./index.php?action=giohang&act=delelelall" onclick="proceedToPayment()">Xóa Hết</a>
                         
                     </td>
                 </tr>

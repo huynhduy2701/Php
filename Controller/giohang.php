@@ -24,7 +24,7 @@ switch ($act) {
             include_once "./Model/giohang.php";
             $gh = new giohang();
             $gh->addGioHang($id, $idSize, $idsoluong);
-
+            var_dump( $sanphamResult);
             echo '<meta http-equiv="refresh" content="0;url=./index.php?action=giohang" />';
         }
         break;

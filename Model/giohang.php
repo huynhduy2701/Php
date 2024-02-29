@@ -75,6 +75,18 @@
         $tensize = $hh->getTenSize($idsize);
          $flag=false;
        
+         var_dump( $sanphamResult);
+         $sanpham = $sanphamResult->fetch(PDO::FETCH_ASSOC);
+
+         $tenhh = $sanpham['tensp'];
+         $dongia = $sanpham['dongia'];
+
+         //lấy hình dựa vào id sản phẩm
+         $hinhResult = $hh->getHinh($id);
+         $hinh = $hinhResult->fetch(PDO::FETCH_ASSOC);
+         $img = $hinh['hinh'];
+
+         $total = $soluong * $dongia;
         // Duyệt qua giỏ hàng để kiểm tra sự tồn tại của sản phẩm với cùng mahh
         foreach ($_SESSION['cart'] as $index=>$item) {
             $flagSize=false;
@@ -82,7 +94,6 @@
                 $flag=true;
                 if ($item['tensize']==$tensize) {
                     $flagSize=true;
-
                 }
             }
             if ( $flag&&$flagSize) {
@@ -90,26 +101,12 @@
                 $_SESSION['cart'][$index]['soluong'] +=1;
                 $flag=false;
                 $flagSize=false;
-            }else{
-               
-                  //tạo ra đối tượng
-            $item = array(
-                'mahh' => $id,
-                'tenhh' => $tenhh,
-                'hinh' => $img,
-                'tensize' => $tensize,
-                'soluong' => $soluong,
-                'dongia' => $dongia,
-                'thanhtien' => $total
-            );
-             // Đưa đối tượng vào giỏ hàng
-             $_SESSION['cart'][] = $item;
             }
             
         }
 
         // Nếu sản phẩm không tồn tại, thêm mới vào giỏ hàng
-        if (!$flag) {
+        if (  $sanphamResult) {
             $sanpham = $sanphamResult->fetch(PDO::FETCH_ASSOC);
 
             $tenhh = $sanpham['tensp'];
