@@ -15,5 +15,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['item_k
     echo '<meta http-equiv="refresh" content="0;url=./index.php?action=giohang" />';
 }
 
+
 // include_once 'view/buy.php';
 ?>

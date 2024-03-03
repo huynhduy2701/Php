@@ -35,7 +35,7 @@
 //     }
 // }
 ?>
-<form action="" method='post' class="mt-5">
+<form action="index.php?action=checkout" method="post" enctype="multipart/form-data">
 <table
     class="table table-bordered "
 >
@@ -99,6 +99,7 @@
     </tbody>
 </table>
 <h1 class="text-center">Điền Thông Tin Mua Hàng</h1>
+
 <div class="row">
     <div class="col-md-6">
         <div class="mb-3">
@@ -135,15 +136,28 @@
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Thanh Toán :</label>
-      <input type="radio" name="thanhtoan"> Tiền Mặt
-      <input type="radio" name="thanhtoan"> Chuyển Khoản
+
+      <?php
+        $ptt= new checkout();
+        $thanhtoan=$ptt->getPTTT();
+        while ($set=$thanhtoan->fetch()):
+      ?>
+        <input type="radio" name="thanhtoan" value="<?php echo $set['idthanhtoan']?>" <?php echo ($set['idthanhtoan'] ? 'checked' : ''); ?>><?php echo $set['tenthanhtoan']?>
+      
+      <?php
+        endwhile
+      ?>
       <!-- <small id="helpId" class="text-muted">Help text</small> -->
     </div>
      
-    <button type="button" class="btn btn-primary mb-3" onclick="thanhtoan()">Thanh Toán</button>
+    <button type="submit" name="submit_checkout" class="btn btn-primary mb-3" onclick="thanhtoan()">Thanh Toán</button>
+
+
+
 
    
 </div>
+
 
 
 </form>

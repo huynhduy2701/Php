@@ -69,69 +69,120 @@
     // }
     
  
+    // function addGioHang($id, $idsize, $soluong) {
+    //     $hh = new sanpham();
+    //     $sanphamResult = $hh->producttail($id);
+    //     $tensize = $hh->getTenSize($idsize);
+    //      $flagId=false;
+       
+    //      var_dump( $sanphamResult);
+    //      $sanpham = $sanphamResult->fetch(PDO::FETCH_ASSOC);
+
+    //      $tenhh = $sanpham['tensp'];
+    //      $dongia = $sanpham['dongia'];
+
+    //      //lấy hình dựa vào id sản phẩm
+    //      $hinhResult = $hh->getHinh($id);
+    //      $hinh = $hinhResult->fetch(PDO::FETCH_ASSOC);
+    //      $img = $hinh['hinh'];
+
+    //      $total = $soluong * $dongia;
+    //     // Duyệt qua giỏ hàng để kiểm tra sự tồn tại của sản phẩm với cùng mahh
+    //     foreach ($_SESSION['cart'] as $index=>$item) {
+    //         $flagSize=false;
+    //         if ($item['mahh'] == $id) {
+    //             $flagId=true;
+    //             if ($item['tensize']==$tensize) {
+    //                 $flagSize=true;
+    //                 $_SESSION['cart'][$index]['soluong'] += 1;
+    //                 break; // Thoát khỏi vòng lặp khi tăng số lượng
+    //             }
+    //         }
+    //     }
+
+    //     // Nếu sản phẩm không tồn tại, thêm mới vào giỏ hàng
+    //     if (  $sanphamResult) {
+    //         $sanpham = $sanphamResult->fetch(PDO::FETCH_ASSOC);
+
+    //         $tenhh = $sanpham['tensp'];
+    //         $dongia = $sanpham['dongia'];
+
+    //         //lấy hình dựa vào id sản phẩm
+    //         $hinhResult = $hh->getHinh($id);
+    //         $hinh = $hinhResult->fetch(PDO::FETCH_ASSOC);
+    //         $img = $hinh['hinh'];
+
+    //         $total = $soluong * $dongia;
+
+    //         //tạo ra đối tượng
+    //         $item = array(
+    //             'mahh' => $id,
+    //             'tenhh' => $tenhh,
+    //             'hinh' => $img,
+    //             'tensize' => $tensize,
+    //             'soluong' => $soluong,
+    //             'dongia' => $dongia,
+    //             'thanhtien' => $total
+    //         );
+
+    //         // Đưa đối tượng vào giỏ hàng
+    //         $_SESSION['cart'][] = $item;
+    //     } else {
+    //         // Xử lý trường hợp có vấn đề khi truy xuất dữ liệu
+    //         echo "Error fetching product details.";
+    //     }
+    // }
+
+    
     function addGioHang($id, $idsize, $soluong) {
         $hh = new sanpham();
         $sanphamResult = $hh->producttail($id);
         $tensize = $hh->getTenSize($idsize);
-         $flag=false;
-       
-         var_dump( $sanphamResult);
-         $sanpham = $sanphamResult->fetch(PDO::FETCH_ASSOC);
-
-         $tenhh = $sanpham['tensp'];
-         $dongia = $sanpham['dongia'];
-
-         //lấy hình dựa vào id sản phẩm
-         $hinhResult = $hh->getHinh($id);
-         $hinh = $hinhResult->fetch(PDO::FETCH_ASSOC);
-         $img = $hinh['hinh'];
-
-         $total = $soluong * $dongia;
-        // Duyệt qua giỏ hàng để kiểm tra sự tồn tại của sản phẩm với cùng mahh
-        foreach ($_SESSION['cart'] as $index=>$item) {
-            $flagSize=false;
-            if ($item['mahh'] == $id) {
-                $flag=true;
-                if ($item['tensize']==$tensize) {
-                    $flagSize=true;
-                }
-            }
-            if ( $flag&&$flagSize) {
-                # code...
-                $_SESSION['cart'][$index]['soluong'] +=1;
-                $flag=false;
-                $flagSize=false;
-            }
-            
-        }
-
-        // Nếu sản phẩm không tồn tại, thêm mới vào giỏ hàng
-        if (  $sanphamResult) {
+    
+        if ($sanphamResult) {
             $sanpham = $sanphamResult->fetch(PDO::FETCH_ASSOC);
-
+    
             $tenhh = $sanpham['tensp'];
             $dongia = $sanpham['dongia'];
-
-            //lấy hình dựa vào id sản phẩm
+    
+            // Lấy hình dựa vào id sản phẩm
             $hinhResult = $hh->getHinh($id);
             $hinh = $hinhResult->fetch(PDO::FETCH_ASSOC);
             $img = $hinh['hinh'];
-
+    
             $total = $soluong * $dongia;
-
-            //tạo ra đối tượng
-            $item = array(
-                'mahh' => $id,
-                'tenhh' => $tenhh,
-                'hinh' => $img,
-                'tensize' => $tensize,
-                'soluong' => $soluong,
-                'dongia' => $dongia,
-                'thanhtien' => $total
-            );
-
-            // Đưa đối tượng vào giỏ hàng
-            $_SESSION['cart'][] = $item;
+    
+            // Duyệt qua giỏ hàng để kiểm tra sự tồn tại của sản phẩm với cùng mahh và tensize
+            $flagId = false;
+            $flagSize = false;
+    
+            foreach ($_SESSION['cart'] as $index => $item) {
+                if ($item['mahh'] == $id) {
+                    $flagId = true;
+                    if ($item['tensize'] == $tensize) {
+                        $flagSize = true;
+                        $_SESSION['cart'][$index]['soluong'] += $soluong;
+                        break; // Thoát khỏi vòng lặp khi tăng số lượng
+                    }
+                }
+            }
+    
+            // Nếu sản phẩm không tồn tại trong giỏ hàng, thêm mới vào giỏ hàng
+            if (!$flagId || !$flagSize) {
+                $item = array(
+                    'mahh' => $id,
+                    'tenhh' => $tenhh,
+                    'hinh' => $img,
+                    'idsize'=>$idsize,
+                    'tensize' => $tensize,
+                    'soluong' => $soluong,
+                    'dongia' => $dongia,
+                    'thanhtien' => $total
+                );
+    
+                // Đưa đối tượng vào giỏ hàng
+                $_SESSION['cart'][] = $item;
+            }
         } else {
             // Xử lý trường hợp có vấn đề khi truy xuất dữ liệu
             echo "Error fetching product details.";

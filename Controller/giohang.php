@@ -24,7 +24,6 @@ switch ($act) {
             include_once "./Model/giohang.php";
             $gh = new giohang();
             $gh->addGioHang($id, $idSize, $idsoluong);
-            var_dump( $sanphamResult);
             echo '<meta http-equiv="refresh" content="0;url=./index.php?action=giohang" />';
         }
         break;
@@ -41,7 +40,18 @@ switch ($act) {
                 exit();
             }
             break;
-       
+     
+            case 'deleteAll':
+                if (isset($_GET['act']) && $_GET['act'] == 'deleteAll') {
+                    // Clear the cart by unsetting the session variable
+                    unset($_SESSION['cart']);
+        
+                    // Redirect back to the cart page or any other desired page
+                  
+                echo '<meta http-equiv="refresh" content="0;url=./index.php?action=giohang" />';
+                    exit();
+                }
+                break;
     default:
         // Các trường hợp khác ở đây
         break;

@@ -14,7 +14,8 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
     </div>
 
     <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) : ?>
-        <form action="./index.php?action=giohang&act=update" method="post" class="mt-5" onsubmit="return checkLogin()">
+        <!-- <form action="./index.php?action=giohang&act=update" method="post" class="mt-5" onsubmit="return checkLogin()"> -->
+        <form action="./index.php?action=giohang&act=update" method="post" class="mt-5">
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -71,7 +72,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                     <td colspan="2">
                         <button type="submit" class="btn btn-primary" name="updateCart">Cập nhật</button>
                         <a type="button" class="btn btn-primary" onclick="proceedToPayment()">Thanh toán</a>
-                        <a type="button" class="btn btn-danger" href="./index.php?action=giohang&act=delelelall" onclick="proceedToPayment()">Xóa Hết</a>
+                        <a onclick="confirmDeleteAll()"   class="btn btn-danger btn-sm">Xóa Hết</a>
                         
                     </td>
                 </tr>
@@ -96,10 +97,23 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
         // Nếu giá trị trả về là 1 (người dùng đã đăng nhập), hàm trả về true, cho phép nộp biểu mẫu.
         // Nếu giá trị trả về là 0 (người dùng chưa đăng nhập), hiển thị một thông báo cảnh báo và chuyển hướng trình duyệt đến trang đăng nhập (./index.php?action=dangnhap).
         // Cuối cùng, hàm trả về false để ngăn chặn nộp biểu mẫu.
-        if ('<?php echo isset($_SESSION['idUser']) ? 1 : 0; ?>' !== '1') {
+        if ( '<?php echo isset($_SESSION['idUser']) ? 1 : 0; ?>' !== '1') {
             // If not logged in, display a message and redirect to the login page
-            alert("Bạn cần đăng nhập để thanh toán");
-            window.location.href = './index.php?action=dangnhap';
+            Swal.fire({
+            title: "Bạn Vui Lòng Đăng Nhập Để Thanh Toán",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Có",
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Nếu người dùng nhấp vào "Có, xóa hết!", chuyển hướng đến hành động xóa hết
+                window.location.href = './index.php?action=dangnhap';
+            }
+        });
+           
             return false; // Prevent the form submission
         }
         return true; // Allow the form submission
@@ -115,6 +129,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
             window.location.href = './index.php?action=buy';
         }
     }
+   
     function confirmDelete(key) {
     Swal.fire({
         title: "Bạn Có Muốn Xóa?",
@@ -130,5 +145,25 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
             window.location.href = "./index.php?action=delete&item_key=" + key;
         }
     });
-}
+    }
+    function confirmDeleteAll() {
+        Swal.fire({
+            title: "Bạn Có Muốn Xóa Hết?",
+            text: "Khi Xóa Bạn Không Thể Khôi Phục Nó",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Có"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Nếu người dùng nhấp vào "Có, xóa hết!", chuyển hướng đến hành động xóa hết
+                window.location.href = "./index.php?action=giohang&act=deleteAll";
+            }
+        });
+    }
+
+    function confirmThanhToan(){
+      
+    }
 </script>

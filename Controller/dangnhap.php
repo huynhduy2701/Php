@@ -40,10 +40,26 @@ switch ($act) {
                 $_SESSION['diachi'] = $userData['diachi'];
                 echo 'idUser: ' . $_SESSION['idUser'] . '<br>';
                 echo 'username: ' . $_SESSION['username'] . '<br>';
-                echo '<script>alert("Đăng Nhập Thành Công")</script>';
+                echo '<script>
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Đăng Nhập Thành Công",
+                    showConfirmButton: false,
+                    timer: 100000
+                  });
+                </script>';
                 echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
             } else {
-                echo '<script>alert("Đăng Nhập Không Thành Công")</script>';
+                echo '<script>
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Đăng Nhập Thất Bại",
+                    showConfirmButton: false,
+                    timer: 10000
+                  });
+                </script>';
                 echo '<meta http-equiv="refresh" content="0;url=./index.php?action=dangnhap" />';
             }
         }
@@ -57,7 +73,15 @@ switch ($act) {
             unset($_SESSION['sodt']);
             unset($_SESSION['diachi']);
             unset($_SESSION['cart']);
-            echo '<script>alert("Đăng Xuất Thành Công")</script>';
+            echo '<script>
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Đăng Xuất Thành Công",
+                    showConfirmButton: false,
+                    timer: 100000
+                  });
+                </script>';
             echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
             break;
     default:

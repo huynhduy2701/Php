@@ -8,13 +8,20 @@ if (isset($_SESSION['idUser'])) {
     if (isset($_POST['submit_binhluan'])) {
         # code...
 
-        $name=$_POST['name'];
-        $idsp=$_POST['idsp'];
-        $iduser=$_SESSION['idUser'];
+        $idUser = $_SESSION['idUser'];
+        $masp=$_POST['idsp'];
         $noidung=$_POST['noidung'];
-        $thembl=$bl->thembl($name,$iduser,$idsp,$noidung);
-        echo '<script>alert("Đăng Nhập Thành Công")</script>';
-        echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
+        $thembl = $bl->thembl($idUser, $masp, $noidung);
+        echo '<script>
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Bình Luận Thành Công",
+            showConfirmButton: false,
+            timer: 100000
+          });
+        </script>';
+        echo '<meta http-equiv="refresh" content="0" />';
     }
   
     

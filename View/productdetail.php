@@ -102,32 +102,35 @@
         var_dump($_SESSION['idUser']);
 ?>
 
-    <form action="index.php?action=binhluan" method="post">
-        <input type="text" name="name" value="<?php echo $_SESSION["username"] ?>">
-        <input type="hidden" name="idsp" value="<?php echo $_GET['id']; ?>">
-        <textarea name="noidung" id="" cols="30" rows="10"></textarea>
-        <input type="submit" name="submit_binhluan" value="gởi bình luận ">
-    </form>
-    <hr>
-    <?php
-       include_once "./Model/binhluan.php";
-       $db=new binhluan();
-       $showbl=$db->showbl();
-
-       while($set=$showbl->fetch()):
-        // var_dump($set);
-    ?>
-    <p>name : <?php echo $set['name']?></p>
-    <p>nội dung : <?php echo $set['noidung']?></p>
-    <?php
-        endwhile;
-    ?>
-
+<form action="index.php?action=binhluan" method="post">
+    <input type="text" name="name" value="<?php echo $_SESSION["username"] ?>">
+    <input type="hidden" name="idsp" value="<?php echo $productData['masp']; ?>">
+    <textarea name="noidung" cols="30" rows="10"></textarea>
+    <input type="submit" name="submit_binhluan" value="Gửi bình luận">
+</form>
 <?php
     else:
         echo "<a href='index.php?action=dangnhap'>Bạn Vui Long đăng nhập để bình luận</a>";
     endif;
 ?>
+    <hr>
+    <?php
+       include_once "./Model/binhluan.php";
+       $db=new binhluan();
+    //    echo $id;
+       $masp=$id;
+       $showbl=$db->showbl($id);
+     
+       while($set=$showbl->fetch()):
+        // var_dump($set);
+    ?>
+    <p>name : <?php echo $set['username_b']?></p>
+    <p>nội dung : <?php echo $set['noidung_a']?></p>
+    <?php
+        endwhile;
+    ?>
+
+
     </div>
 </div>
 </section>
