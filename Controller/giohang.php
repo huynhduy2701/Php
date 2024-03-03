@@ -19,12 +19,24 @@ switch ($act) {
             $id = $_POST['mahh'];
             $idSize = $_POST['mysize'];
             $idsoluong = $_POST['soluong'];
-
+            $note = $_POST['note'];
             // Xử lý thêm sản phẩm vào giỏ hàng ở đây
             include_once "./Model/giohang.php";
             $gh = new giohang();
-            $gh->addGioHang($id, $idSize, $idsoluong);
-            echo '<meta http-equiv="refresh" content="0;url=./index.php?action=giohang" />';
+            $gh->addGioHang($id, $idSize, $idsoluong, $note);
+            echo '<script>
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Thêm Vào Giỏ Hàng Thành Công",
+                showConfirmButton: false,
+                timer: 1000 
+            });
+            setTimeout(function() {
+                window.location.href = "./index.php?action=giohang";
+            }, 1000); // Chuyển hướng sau 10 giây
+        </script>';
+            // echo '<meta http-equiv="refresh" content="0;url=./index.php?action=giohang" />';
         }
         break;
         case 'update':
@@ -35,7 +47,19 @@ switch ($act) {
                         $_SESSION['cart'][$key]['soluong'] = $quantity;
                     }
                 }
-                echo '<meta http-equiv="refresh" content="0;url=./index.php?action=giohang" />';
+                echo '<script>
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Cập Nhật Giỏ Hàng Thành Công",
+                showConfirmButton: false,
+                timer: 1000 
+            });
+            setTimeout(function() {
+                window.location.href = "./index.php?action=giohang";
+            }, 1000); // Chuyển hướng sau 10 giây
+        </script>';
+                // echo '<meta http-equiv="refresh" content="0;url=./index.php?action=giohang" />';
 
                 exit();
             }

@@ -34,9 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_checkout'])) {
                 title: "Đặt Hàng Thành Công",
                 showConfirmButton: false,
                 timer: 500000
-              });
+              })
+              setTimeout(function() {
+                window.location.href = "./index.php";
+            }, 1000); // Chuyển hướng sau 10 giây;;
             </script>';
-            echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
+            // echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
         }
     }
 }

@@ -40,27 +40,34 @@ switch ($act) {
                 $_SESSION['diachi'] = $userData['diachi'];
                 echo 'idUser: ' . $_SESSION['idUser'] . '<br>';
                 echo 'username: ' . $_SESSION['username'] . '<br>';
+               
                 echo '<script>
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Đăng Nhập Thành Công",
-                    showConfirmButton: false,
-                    timer: 100000
-                  });
-                </script>';
-                echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Đăng Nhập Thành Công",
+                            showConfirmButton: false,
+                            timer: 1000 
+                        });
+                        setTimeout(function() {
+                            window.location.href = "./index.php";
+                        }, 1000); // Chuyển hướng sau 10 giây
+                    </script>';
+                
             } else {
                 echo '<script>
                 Swal.fire({
                     position: "top-end",
-                    icon: "success",
+                    icon: "error",
                     title: "Đăng Nhập Thất Bại",
                     showConfirmButton: false,
-                    timer: 10000
-                  });
+                    timer: 1000
+                  })
+                  setTimeout(function() {
+                    window.location.href = "./index.php?action=dangnhap";
+                }, 1000); // Chuyển hướng sau 10 giây;
                 </script>';
-                echo '<meta http-equiv="refresh" content="0;url=./index.php?action=dangnhap" />';
+                // echo '<meta http-equiv="refresh" content="0;url=./index.php?action=dangnhap" />';
             }
         }
         break;
@@ -79,10 +86,13 @@ switch ($act) {
                     icon: "success",
                     title: "Đăng Xuất Thành Công",
                     showConfirmButton: false,
-                    timer: 100000
-                  });
+                    timer: 1000
+                  })
+                  setTimeout(function() {
+                    window.location.href = "./index.php";
+                }, 900); // Chuyển hướng sau 10 giây;;
                 </script>';
-            echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
+            // echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
             break;
     default:
    

@@ -25,6 +25,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                         <th scope="col">size</th>
                         <th scope="col">Số Lượng</th>
                         <th scope="col">Đơn giá</th>
+                        <th scope="col">Ghi Chú</th>
                         <th scope="col">Thành Tiền</th>
                         <th></th>
                     </tr>
@@ -39,6 +40,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                     foreach ($_SESSION['cart'] as $key => $item) :
                         $j++;
                         $totalAmount += $item['dongia'] * $item['soluong'];
+                        // var_dump($_SESSION['cart'])
                     ?>
                         <tr>
                             
@@ -57,6 +59,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
 
                             </td>
                             <td><?php echo number_format($item['dongia']) ?></td>
+                            <td><?php echo ($item['note']) ?></td>
                             <td><?php echo number_format($item['dongia'] * $item['soluong']) ?></td>
                             <td>
                                 <a onclick="confirmDelete(<?php echo $key; ?>)"  class="btn btn-danger btn-sm">Xóa</a>
@@ -67,15 +70,16 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                         
                     <?php endforeach; ?>
                     <tr>
-                    <th colspan="4" class="text-center">Tổng Tiền</th>
-                    <td colspan="2" class="text-center"><?php echo number_format($totalAmount) ?></td>
-                    <td colspan="2">
-                        <button type="submit" class="btn btn-primary" name="updateCart">Cập nhật</button>
-                        <a type="button" class="btn btn-primary" onclick="proceedToPayment()">Thanh toán</a>
-                        <a onclick="confirmDeleteAll()"   class="btn btn-danger btn-sm">Xóa Hết</a>
-                        
-                    </td>
-                </tr>
+                        <th colspan="4" class="text-center">Tổng Tiền</th>
+                        <td colspan="2" class="text-center"><?php echo number_format($totalAmount) ?></td>
+                        <td colspan="2">
+                            <button type="submit" class="btn btn-primary" name="updateCart">Cập nhật</button>
+                            <a type="button" class="btn btn-primary" onclick="proceedToPayment()">Thanh toán</a>
+                            <a onclick="confirmDeleteAll()"   class="btn btn-danger btn-sm">Xóa Hết</a>
+                            
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </form>
         <?php endif; ?>
@@ -83,8 +87,20 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
     <?php 
     }
     else {
-        echo '<script> alert("Bạn chưa có giỏ hàng")</script>';
-        echo '<meta http-equiv="refresh" content="0;url=./index.php?action=home" />';
+        echo '<script>
+        Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: "bạn chưa có giỏ hàng",
+            showConfirmButton: false,
+            timer: 1000 
+        });
+        setTimeout(function() {
+            window.location.href = "index.php?action=sanpham&act=home";
+        }, 1000); // Chuyển hướng sau 10 giây
+    </script>';
+        // echo '<script> alert("Bạn chưa có giỏ hàng")</script>';
+        // echo '<meta http-equiv="refresh" content="0;url=./index.php?action=home" />';
         
     }
 

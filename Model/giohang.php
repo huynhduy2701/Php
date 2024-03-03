@@ -134,7 +134,7 @@
     // }
 
     
-    function addGioHang($id, $idsize, $soluong) {
+    function addGioHang($id, $idsize, $soluong,$note) {
         $hh = new sanpham();
         $sanphamResult = $hh->producttail($id);
         $tensize = $hh->getTenSize($idsize);
@@ -155,7 +155,7 @@
             // Duyệt qua giỏ hàng để kiểm tra sự tồn tại của sản phẩm với cùng mahh và tensize
             $flagId = false;
             $flagSize = false;
-    
+           
             foreach ($_SESSION['cart'] as $index => $item) {
                 if ($item['mahh'] == $id) {
                     $flagId = true;
@@ -174,6 +174,7 @@
                     'tenhh' => $tenhh,
                     'hinh' => $img,
                     'idsize'=>$idsize,
+                    'note' => $note,
                     'tensize' => $tensize,
                     'soluong' => $soluong,
                     'dongia' => $dongia,
@@ -182,6 +183,7 @@
     
                 // Đưa đối tượng vào giỏ hàng
                 $_SESSION['cart'][] = $item;
+                var_dump($note);
             }
         } else {
             // Xử lý trường hợp có vấn đề khi truy xuất dữ liệu

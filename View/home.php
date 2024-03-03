@@ -34,13 +34,8 @@
         <div class="col-lg-8 mt-5 text-md-right">
             <div class="float-md-right" style="width: 600px; display: inline-block;">
                 
-                <?php
-            //     if (!isset($_SESSION['idUser']) && !isset($_SESSION['username'])) {
-            //    echo ' <a href="index.php?action=dangnhap" class="btn btn-primary" style="display: inline-block;">Dang Nhap</a>';
-            //     echo '  <a href="index.php?action=dangky" class="btn btn-secondary" style="display: inline-block;">Dang Ki</a>';
-            //     }
-                ?>
-                    <?php
+              
+            <?php
                   // <p>Xin Chào <a href="#"> '.$_SESSION["username"].'</a></p>
                 if (isset($_SESSION['idUser']) && isset($_SESSION['username'])) {
                     echo '
@@ -53,7 +48,7 @@
                             Xin Chào <a href="#"> '.$_SESSION["username"].'</a>
                             </button>
                             <ul class="dropdown-menu ">
-                              <li> <a class="dropdown-item " href="#">Thông Tin</a></li>
+                              <li> <a class="dropdown-item " href="index.php?action=thongtin">Thông Tin</a></li>
                               <li> <a class="dropdown-item " href="index.php?action=dangnhap&act=dangxuat">Đăng Xuất</a></li>
                               
                             </ul>
@@ -63,29 +58,7 @@
                         ';
                         
                     } 
-                    ?>
-                
-               <!-- <li>
-                   <a href="index.php?action=dangnhap&act=dangxuat">Đăng Xuất</a>
-               </li> -->
-               
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-            return new bootstrap.Popover(popoverTriggerEl);
-        });
-
-        // Bật tính năng loại bỏ cửa sổ bật lên ở tiêu điểm
-        var popoverDismissList = [].slice.call(document.querySelectorAll('.popover-dismiss'));
-        var popoverDismiss = popoverDismissList.map(function (popoverDismissEl) {
-            return new bootstrap.Popover(popoverDismissEl, {
-                trigger: 'focus'
-            });
-        });
-    });
-</script>
+            ?>
             </div>
         </div>
     </div>
@@ -95,12 +68,12 @@
     <div class="row">
     <div class="d-flex">
         <!-- <form action="./index.php?action=search&act=search-product" method="post"> -->
-        <form action="./index.php?action=search&act=search-product&key-word" method="post">
+        <form action="./index.php?action=search&act=search-product&search_keyword" method="post">
             <input type="text" class="form-control" name="search_keyword" style="width: 200px; display: inline-block; margin-right: 10px;">
-            <select id="sortOption" class="form-control" style="width: 150px; display: inline-block; margin-right: 10px;">
+            <!-- <select id="sortOption" class="form-control" style="width: 150px; display: inline-block; margin-right: 10px;">
                 <option value="">Giá Từ Thấp Đến Cao</option>
                 <option value="">Giá Từ Cao Đến Thấp</option>
-            </select> 
+            </select>  -->
             <input type="submit" value="Tìm Kiếm" class="btn btn-primary" name="search">
         </form>
     </div>      
@@ -304,3 +277,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
  </style>
+ <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl);
+        });
+
+        // Bật tính năng loại bỏ cửa sổ bật lên ở tiêu điểm
+        var popoverDismissList = [].slice.call(document.querySelectorAll('.popover-dismiss'));
+        var popoverDismiss = popoverDismissList.map(function (popoverDismissEl) {
+            return new bootstrap.Popover(popoverDismissEl, {
+                trigger: 'focus'
+            });
+        });
+    });
+</script>

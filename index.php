@@ -48,6 +48,7 @@ session_start();
 		<link href="./Content/css/tiny-slider.css" rel="stylesheet">
 		<link href="./Content/css/style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
         <title>Cà Phê</title>
 </head>
 <style>
@@ -77,11 +78,10 @@ body {
  
     <?php
     include_once 'View/header.php';
-     if (!isset($_GET['act'])||$_GET['act']=='home') {
-    include_once 'View/nav.php';
-    
+     if (!isset($_GET['act'])||$_GET['act']=='home'||!isset($_GET['action'])=='thongtin') { 
+       include_once 'View/nav.php';
     }
-
+   
     ?>
 
     
@@ -113,7 +113,11 @@ body {
       </div>
     <!-- hiên thị footer -->
 <?php
-  include_once 'View/footer.php'
+  if (!isset($_GET['action'])=='thongtin') { 
+    include_once 'View/footer.php';
+ }
+
+ 
 ?>
 
 </footer>

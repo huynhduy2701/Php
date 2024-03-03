@@ -22,6 +22,7 @@
                 $diachi="";
                 $sodt="";
                 $pass="";
+                $cfpass="";
                 if (isset($_POST['submit'])) {
                     # code...
                     $hokh=$_POST['hokh'];
@@ -31,6 +32,7 @@
                     $diachi=$_POST['diachi'];
                     $sodt=$_POST['sodienthoai'];
                     $pass=$_POST['password'];
+                    $cfpass=$_POST['cfpassword'];
                     $saltF="G45a#?";
                     $saltL="Td23$%";
                     $passnew=md5($saltF.$pass.$saltL); //được mã hóa
@@ -40,23 +42,59 @@
                     $check=$kh->checkUser($tenUser,$email)->rowCount();
                     if ($check>=1) {
                         # code...
-                        echo '<script>alert("username hoặc email đã tồn tại")</script>';
+                        echo '<script>
+                        Swal.fire({
+                            position: "top-center",
+                            icon: "error",
+                            title: "username hoặc email đã tồn tại",
+                            showConfirmButton: false,
+                            timer: 3000 
+                        });
+                        setTimeout(function() {
+                            window.location.href = "./index.php?action=dangky";
+                        }, 1000); // Chuyển hướng sau 10 giây
+                    </script>';
+                        // echo '<script>alert("username hoặc email đã tồn tại")</script>';
                         // include_once "./View/registration.php";
-                        echo '<meta http-equiv="refresh" content="0;url=./index.php?action=dangki" />';
+                        // echo '<meta http-equiv="refresh" content="0;url=./index.php?action=dangky" />';
 
                     }else{
                         //insert vào database
                         $inserkh=$kh->insertUser($hokh,$tenkh,$email,$diachi,$sodt,$tenUser,$passnew);
-                        if ($inserkh!==false) {
+                        if ($inserkh!==false&&$pass== $cfpass) {
                             # code...
-                            echo '<script>alert("Đăng kí thành công")</script>';
+                            echo '<script>
+                            Swal.fire({
+                                position: "top-center",
+                                icon: "success",
+                                title: "Đăng kí thành công",
+                                showConfirmButton: false,
+                                timer: 1000 
+                            });
+                            setTimeout(function() {
+                                window.location.href = "./index.php";
+                            }, 1000); // Chuyển hướng sau 10 giây
+                        </script>';
+                            // echo '<script>alert("Đăng kí thành công")</script>';
                             // include_once "./View/home.php";
-                            echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
+                            // echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
 
                         }else{
-                            echo '<script>alert("Đăng kí khong thành công")</script>';
+                            echo '<script>
+                            Swal.fire({
+                                position: "top-center",
+                                icon: "error",
+                                title: "Đăng kí không thành công",
+                                showConfirmButton: false,
+                                timer: 1000 
+                            });
+                            setTimeout(function() {
+                                window.location.href = "./index.php?action=dangki";
+                            }, 1000); // Chuyển hướng sau 10 giây
+                        </script>';
+                            // echo '<script>alert("Đăng kí khong thành công")</script>';
                             // include_once "./View/registration.php";
-                        echo '<meta http-equiv="refresh" content="0;url=./index.php?action=dangki" />';
+                        // echo '<meta http-equiv="refresh" content="0;url=./index.php?action=dangki" />';
 
                         }
                     }

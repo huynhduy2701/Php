@@ -62,6 +62,12 @@
                                 }
                                 ?>
                             </select>
+
+                            <div class="form-floating mt-4">
+                                <textarea class="form-control"  name="note" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">Ghi Chú </label>
+                            </div>
+                            
                         </div>
 
                         <div class="col-md-4 col-6 mb-3">
@@ -75,6 +81,9 @@
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
+                            <!-- Vertically centered modal -->
+                            <!-- Button trigger modal -->
+                           
                         </div>
                     </div>
 
@@ -87,6 +96,7 @@
                 </main>
             </div>
         </div>
+        <hr>
     </section>
     
 </form>
@@ -95,7 +105,7 @@
 
   <div class="row">
     <div class="col-md-4 col-6 mb-3">
-       <hr>
+      
     <?php
    
     if (isset($_SESSION['idUser']) && isset($_SESSION['username']) && isset($_SESSION['idUser']) > 0):
@@ -103,10 +113,13 @@
 ?>
 
 <form action="index.php?action=binhluan" method="post">
-    <input type="text" name="name" value="<?php echo $_SESSION["username"] ?>">
     <input type="hidden" name="idsp" value="<?php echo $productData['masp']; ?>">
-    <textarea name="noidung" cols="30" rows="10"></textarea>
-    <input type="submit" name="submit_binhluan" value="Gửi bình luận">
+    <div class="form-floating">
+        <textarea class="form-control" name="noidung" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+        <label for="floatingTextarea2">Tên User : <?php echo $_SESSION["username"] ?></label>
+    </div>
+   
+    <input type="submit" name="submit_binhluan" class="btn btn-primary" value="Gửi bình luận">
 </form>
 <?php
     else:
@@ -124,8 +137,10 @@
        while($set=$showbl->fetch()):
         // var_dump($set);
     ?>
-    <p>name : <?php echo $set['username_b']?></p>
-    <p>nội dung : <?php echo $set['noidung_a']?></p>
+    
+    <p> <?php echo $set['username_b']?> : </p>
+    <span><?php echo $set['noidung_a']?> </span> 
+    <hr>
     <?php
         endwhile;
     ?>

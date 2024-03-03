@@ -48,6 +48,7 @@
             <th scope="col">Số Lượng</th>
             <th scope="col">Đơn gía</th>
             <th >Thành Tiền</th>
+            <th >Ghi Chú</th>
 
         </tr>
     </thead>
@@ -70,6 +71,7 @@
             </td>
             <td><?php echo number_format($item['dongia']) ?></td>
             <td ><?php echo number_format($item['thanhtien']) ?></td>
+            <td ><?php echo($item['note']) ?></td>
 
         </tr>
         <?php
@@ -169,7 +171,19 @@
 <?php
         }
         else {
-            echo '<script> alert("bạn chưa có giỏ hàng")</script>';
-            echo '<meta http-equiv="refresh" content="0;url=./index.php?action=home" />';
+            echo '<script>
+                            Swal.fire({
+                                position: "top-center",
+                                icon: "error",
+                                title: "bạn chưa có giỏ hàng",
+                                showConfirmButton: false,
+                                timer: 1000 
+                            });
+                            setTimeout(function() {
+                                window.location.href = "/index.php?action=home";
+                            }, 1000); // Chuyển hướng sau 10 giây
+                        </script>';
+            // echo '<script> alert("bạn chưa có giỏ hàng")</script>';
+            // echo '<meta http-equiv="refresh" content="0;url=./index.php?action=home" />';
         }
 ?>

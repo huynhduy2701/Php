@@ -110,7 +110,7 @@
           </div>
       </div>
   </div>
-  <script>
+  <style>
     body{
     margin-top:20px;
     background:#eee;
@@ -135,4 +135,4 @@
     box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
     vertical-align: middle;
 }
-  </script>
+  </style>
