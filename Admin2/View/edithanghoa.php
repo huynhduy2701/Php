@@ -29,15 +29,8 @@ $act=1;
 ?>
  <!-- Hiiern thị tiêu đề -->
 
- <?php
-  if ($act==1) {
-    # code...
-    echo "<h1>Thêm Sản Phẩm</h1>";
-  }else{
-    echo "<h1>Sửa Sản Phẩm</h1>";
-  }
- ?>
-<div class="row col-md-4 col-md-offset-4" >
+
+<div class="row col-md-4 col-md-offset-4 mt-5 m-auto " >
   <?php
     if ($act==1) {
       # code...
@@ -48,9 +41,16 @@ $act=1;
 
   }
   ?>
-    <table class="table" style="border: 0px;">
-
-      <tr>
+<table class="table border shadow-lg p-3 mb-5 bg-body-tertiary rounded " style="border: 0px;">
+<?php
+      if ($act==1) {
+        # code...
+        echo "<h1 class='text-primary my-4  mt-5 mb-0'>Thêm Sản Phẩm</h1>";
+      }else{
+        echo "<h1 class='text-primary mt-5 mb-0'>Sửa Sản Phẩm</h1>";
+      }
+?>
+      <tr >
         <td>Mã hàng</td>
         <td> <input type="text" class="form-control" name="masp" value="<?php if(isset($masp)) echo $masp?>"  readonly/></td>
       </tr>
@@ -108,7 +108,9 @@ $act=1;
 
       <tr>
         <td colspan="2">
-          <input type="submit" value="submit">
+          <div class="d-flex justify-content-center">
+          <input type="submit" value="submit" class="btn btn-primary">
+          </div>
           
 
         </td>

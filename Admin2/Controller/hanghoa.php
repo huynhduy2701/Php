@@ -28,7 +28,7 @@
             $sp = new hanghoa();
             $sp->getInsertSanPham($tensp,$maloai,$mota,$ngaylap,$hinh);
             echo '<script>alert("Thêm Sản Phẩm Thành Công")</script>';
-            echo '<meta http-equiv=refresh content="0;url=./index.php?action=hanghoa"/>';
+            echo '<meta http-equiv=refresh content="0;url=./index.php"/>';
         }
         break;
         case 'update_hanghoa':

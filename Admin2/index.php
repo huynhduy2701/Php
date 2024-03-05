@@ -3,6 +3,7 @@
 // include "Model/hanghoa.php";
 // include "Model/loaisanpham.php";
 session_start();
+// unset( $_SESSION['admin']);
 spl_autoload_register ('myModelLoader');
     function myModelLoader($className){
       $path='Model/';
@@ -24,11 +25,14 @@ spl_autoload_register ('myModelLoader');
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- link đăng nhập -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <!-- end -->
     <!-- end link đăng nhập -->
     <link rel="stylesheet" type="text/css" href="../Content/CSS/Tour.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Admin SanPham</title>
 </head>
 
@@ -41,10 +45,12 @@ spl_autoload_register ('myModelLoader');
     }
     
 ?>
+
         <!-- end hinh dong -->
         <!-- phan thân -->
-        <div class="container">
-        <div class="row">
+        <div class="container mt-5">
+   
+    
         <?php
              //load controler
             $ctrl="dangnhap";
@@ -56,15 +62,15 @@ spl_autoload_register ('myModelLoader');
         //end controller
             
         ?>
-        </div>
+     
         <!-- end menu right -->
     </div>
     <!-- footer -->
 <?php
-    if (isset($_SESSION['admin'])) {
-        # code...
-        include "View/footer.php";
-    }
+    // if (isset($_SESSION['admin'])) {
+    //     # code...
+    //     include "View/footer.php";
+    // }
 ?>
     <!-- end footer -->
    
