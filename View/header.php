@@ -1,6 +1,6 @@
 <div class="">
     <div class="header fixed-top">
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class=" navbar-expand-lg navbar-light">
             <!-- Nút toggle cho thiết bị di động -->
             <button class="navbar-toggler  btn-close" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -9,9 +9,10 @@
             
             
             <!-- Navigation Menu -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse mb-0" id="navbarSupportedContent">
                 <ul class="menu_nav navbar-nav me-auto">
-                    <?php include_once "./Controller/MenuController.php"; echo $menuHTML; ?>
+                    
+                    <?php include_once "./Controller/MenuController.php"; echo $menuHTML;  ?>
                     <?php
                          if (!isset($_SESSION['idUser']) && !isset($_SESSION['username'])) {
                             echo ' <li class="nav-item"><a class="nav-link" href="index.php?action=dangnhap"><img src="./Content/images/user.svg"></a></li>';
@@ -46,7 +47,6 @@
         </nav>
     </div>
 </div>
-   
 
 
 

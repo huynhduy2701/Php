@@ -42,7 +42,7 @@
 
                         <div class="mb-3">
                             <span class="h5"><?php echo $productData['dongia'] ?></span>
-                            <span class="text-muted">VND</span>
+                            <span class="text-muted"><sup>VND</sup></span>
                         </div>
 
                         <p>

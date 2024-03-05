@@ -58,7 +58,6 @@ class MenuModel {
         }
         return $html;
     }
-
     private function generateMenuItemHTML($data, $menu) {
         $count = 0;
         foreach ($data as $key => $value) {
@@ -80,5 +79,7 @@ class MenuModel {
 
         return $menuItemHTML;
     }
+   
+
 }
 ?>

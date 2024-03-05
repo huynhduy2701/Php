@@ -40,7 +40,7 @@ spl_autoload_register ('myModelLoader');
         include "View/headder.php";
     }
     
-        ?>
+?>
         <!-- end hinh dong -->
         <!-- phan thân -->
         <div class="container">
@@ -60,12 +60,12 @@ spl_autoload_register ('myModelLoader');
         <!-- end menu right -->
     </div>
     <!-- footer -->
-    <?php
+<?php
     if (isset($_SESSION['admin'])) {
         # code...
         include "View/footer.php";
     }
-    ?>
+?>
     <!-- end footer -->
    
 </body>

@@ -178,29 +178,15 @@ switch ($act) {
                 if ($mail->Send()) {
                     
                     // echo '<script> alert("Vui lòng kiểm tra mã gởi về trong mail bạn");</script>';
-                    echo '<script> 
-                    let timerInterval;
+                    echo '<script>
                     Swal.fire({
-                      title: "Vui Lòng Kiểm Tra Mã Trong Mail",
-                      html: "Chúng Tôi sẽ gởi mã cho bạn trong  <b></b> giây.",
-                      timer: 2000,
-                      timerProgressBar: true,
-                      didOpen: () => {
-                        Swal.showLoading();
-                        const timer = Swal.getPopup().querySelector("b");
-                        timerInterval = setInterval(() => {
-                          timer.textContent = `${Swal.getTimerLeft()}`;
-                        }, 100);
-                      },
-                      willClose: () => {
-                        clearInterval(timerInterval);
-                      }
-                    }).then((result) => {
-                      /* Read more about handling dismissals below */
-                      if (result.dismiss === Swal.DismissReason.timer) {
-                        console.log("I was closed by the timer");
-                      }
-                    });
+                        position: "top-center",
+                        icon: "success",
+                        title: "Vui lòng kiểm tra mã gởi về trong mail bạn",
+                        showConfirmButton: false,
+                        timer: 1000
+                      })
+                       // Chuyển hướng sau 10 giây;;
                     </script>';
                     include "./View/codeforget.php";
                     
@@ -209,100 +195,237 @@ switch ($act) {
                     include "./View/inputmailforget.php";
                 }
             } else {
-                echo '<script> alert("Địa chỉ mail không tồn tại");</script>';
+
+                // echo '<script> alert("Địa chỉ mail không tồn tại");</script>';
+                echo '<script>
+                    Swal.fire({
+                        position: "top-center",
+                        icon: "error",
+                        title: "Địa chỉ mail không tồn tại",
+                        showConfirmButton: false,
+                        timer: 1000
+                      })
+                       // Chuyển hướng sau 10 giây;;
+                    </script>';
                 include "./View/inputmailforget.php";
             }
         }
         break;
-    case "forgetpasss":
-        $flag = true;
-
+    case "forgetpass":
+       
         if (isset($_POST['submit'])) {
+           
             $enteredCode = $_POST['code'];
             $storedCode = $_SESSION['code'];
-     // Kiểm tra xem mã có đúng định dạng không (chỉ chấp nhận 6 chữ số)
-     if (!preg_match('/^\d{6}$/', $enteredCode)) {
-        echo '<script> alert("Mã phải là 6 chữ số. Vui lòng kiểm tra lại.");</script>';
-        include "./View/codeforget.php";
-        exit; // Dừng thực hiện code tiếp theo
-    }
+            // Kiểm tra xem mã có đúng định dạng không (chỉ chấp nhận 6 chữ số)
+            if (!preg_match('/^\d{6}$/', $enteredCode)) {
+                echo '<script> alert("Mã phải là 6 chữ số. Vui lòng kiểm tra lại.");</script>';
+                include "./View/codeforget.php";
+                exit; // Dừng thực hiện code tiếp theo
+            }
     
             if ($enteredCode == $storedCode) {
                 // Nếu mã nhập vào đúng, chuyển hướng sang trang forgetpasss
-                if (isset($_POST['submit_reset'])) {
-                    $pass = $_POST['password'];
+                // if (isset($_POST['submit_reset'])) {
+                    //echo '<script> alert("jjjjjj.");</script>';
+                    $pass = $_POST['code'];
                     $email = $_SESSION['email']; // Lấy địa chỉ email từ session
                     $code = $_SESSION['code']; // Lấy code từ session
                    
                     // Kiểm tra email và code tồn tại trong session
-                    if ($email && $code) {
-                        $flag = false;
+                    if ($email && $code && ($code==$pass)) {
+                       // echo "helllo";
+                        // $flag = false;
                         $user = new user();
                         $saltF = "G45a#?";
                         $saltL = "Td23$%";
                         $passnew = md5($saltF . $pass . $saltL);
-                        $user->updatePass($email, $passnew);
+                        $check=$user->updatePass($email, $passnew);
+                        if($check!==false)
+                        {
+                            // echo '<script> alert("Nhập Mã Thành Công");</script>';
+                            echo '<script>
+                            Swal.fire({
+                                position: "top-center",
+                                icon: "success",
+                                title: "Nhập Mã Thành Công",
+                                showConfirmButton: false,
+                                timer: 1000
+                              })
+                              setTimeout(function() {
+                                window.location.href = "./index.php?action=forget&act=forgetpasss";
+                            }, 900); // Chuyển hướng sau 10 giây;;
+                            </script>';
+                        //    echo '<meta http-equiv="refresh" content="0;url=./index.php?action=forget&act=forgetpasss" />';
+                        }
+                        else
+                        {
+                            echo '<script>
+                            Swal.fire({
+                                position: "top-center",
+                                icon: "error",
+                                title: "Nhập Mã Thất Bại",
+                                showConfirmButton: false,
+                                timer: 1000
+                              })
+                              setTimeout(function() {
+                                window.location.href = "./index.php?action=forget&act=codeforge";
+                            }, 900); // Chuyển hướng sau 10 giây;;
+                            </script>';
+                            // echo '<script> alert("Thay Đổi Mật Khẩu ko Thành Công");</script>';
+                            // echo '<meta http-equiv="refresh" content="0;url=./index.php?action=forget&act=codeforget" />';
+                        }
                         // unset($_SESSION['email']); // Xóa session email sau khi đã sử dụng
                         // unset($_SESSION['code']); // Xóa session code sau khi đã sử dụng
-                        echo '<script> alert("Thay Đổi Mật Khẩu Thành Công");</script>';
-                        echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
+                        
         
-                    }
-                }
-        
-                if ($flag == true) {
-                    //true là có lỗi
-
-                    include_once "./View/forgetpasss.php";
                     
                 }
-               
-            } else {
-                // Nếu mã nhập vào không đúng, hiển thị thông báo lỗi và quay lại trang codeforget
-                // echo '<script> alert("Mã nhập vào không đúng. Vui lòng kiểm tra lại.");</script>';
-                echo '<script>
-                Swal.fire({
-                    position: "top-end",
-                    icon: "error",
-                    title: "Mã nhập vào không đúng. Vui lòng kiểm tra lại.",
-                    showConfirmButton: false,
-                    timer: 1000
-                  })
-                  setTimeout(function() {
-                    window.location.href = "./index.php?action=dangnhap";
-                }, 1000); // Chuyển hướng sau 10 giây;
-                </script>';
-                include "./View/codeforget.php";
+        
             }
-        } else {
-            // Nếu không có mã được nhập, quay lại trang codeforget
-            include "./View/codeforget.php";
-        }
-       
+               
+            }
+        //include_once "./View/forgetpasss.php";
         break;
-    case "forgetpasss":
-        include_once "./View/forgetpasss.php";
+    // case "forgetpass_action1":
+
+    //     if (isset($_POST['submit_reset'])) {
+    //         $enteredCode = $_POST['code'];
+    //         $storedCode = $_SESSION['code'];
+    //         // Kiểm tra xem mã có đúng định dạng không (chỉ chấp nhận 6 chữ số)
+    //         if (!preg_match('/^\d{6}$/', $enteredCode)) {
+    //             echo '<script> alert("Mã phải là 6 chữ số. Vui lòng kiểm tra lại.");</script>';
+    //             include "./View/codeforget.php";
+    //             exit; // Dừng thực hiện code tiếp theo
+    //         }
+    
+    //         if ($enteredCode == $storedCode) {
+    //             // Nếu mã nhập vào đúng, chuyển hướng sang trang forgetpasss
+    //             if (isset($_POST['submit_reset'])) {
+    //                 $pass = $_POST['password'];
+    //                 $email = $_SESSION['email']; // Lấy địa chỉ email từ session
+    //                 $code = $_SESSION['code']; // Lấy code từ session
+                   
+    //                 // Kiểm tra email và code tồn tại trong session
+    //                 if ($email && $code) {
+    //                     echo "helllo";
+    //                     // $flag = false;
+    //                     $user = new user();
+    //                     $saltF = "G45a#?";
+    //                     $saltL = "Td23$%";
+    //                     $passnew = md5($saltF . $pass . $saltL);
+    //                     $check=$user->updatePass($email, $passnew);
+    //                     if($check!==false)
+    //                     {
+    //                         echo '<script> alert("Thay Đổi Mật Khẩu Thành Công");</script>';
+    //                         echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
+    //                     }
+    //                     else
+    //                     {
+    //                         echo '<script> alert("Thay Đổi Mật Khẩu ko Thành Công");</script>';
+    //                         echo '<meta http-equiv="refresh" content="0;url=./index.php?action=forget&act=forgetpasss" />';
+    //                     }
+    //                     // unset($_SESSION['email']); // Xóa session email sau khi đã sử dụng
+    //                     // unset($_SESSION['code']); // Xóa session code sau khi đã sử dụng
+                        
+        
+    //                 }
+    //             }
+        
+               
+               
+    //         } else {
+    //             // Nếu mã nhập vào không đúng, hiển thị thông báo lỗi và quay lại trang codeforget
+    //             // echo '<script> alert("Mã nhập vào không đúng. Vui lòng kiểm tra lại.");</script>';
+    //             echo '<script>
+    //             Swal.fire({
+    //                 position: "top-end",
+    //                 icon: "error",
+    //                 title: "Mã nhập vào không đúng. Vui lòng kiểm tra lại.",
+    //                 showConfirmButton: false,
+    //                 timer: 1000
+    //               })
+    //               setTimeout(function() {
+    //                 window.location.href = "./index.php?action=dangnhap";
+    //             }, 1000); // Chuyển hướng sau 10 giây;
+    //             </script>';
+    //             include "./View/codeforget.php";
+    //         }
+    //     } else {
+    //         // Nếu không có mã được nhập, quay lại trang codeforget
+    //         include "./View/codeforget.php";
+    //     }
+       
+    //     break;
+        case "forgetpasss":
+            include_once "./View/forgetpasss.php";
+            break;
+        case "forgetpass_action":
+        //include_once "./View/forgetpasss.php";
         if (isset($_POST['submit_reset'])) {
+           
                 $pass = $_POST['passwordNew'];
                 
                 
                 
                 $email = $_SESSION['email']; // Lấy địa chỉ email từ session
-                $code = $_SESSION['code']; // Lấy code từ session
-                
-                // Kiểm tra email và code tồn tại trong session
-                if ($email && $code) {
-                    $flag = false;
-                    $user = new user();
+                $code = $_SESSION['code'];// Lấy code từ session;
+                $saltF="G45a#?";
+                $saltL="Td23$%";
+                $code=md5($saltF.$code.$saltL);
+                echo $code;
+                echo "<br/>";
+                // lấy ra pass trong database
+                $user = new user();
+                $passdb=$user->getPassOld($email);
+                echo $passdb[0];
+               // Kiểm tra email và code tồn tại trong session
+                if (isset($code)) {
+                    //echo "hhhhhh";
+                   // echo '<script> alert("Tyyyyyy");</script>';
+                   
                     $saltF="G45a#?";
                     $saltL="Td23$%";
                     $passnew=md5($saltF.$pass.$saltL);
-                    $user->updatePass($email,$passnew);
-                    
+                    echo $passnew;
+                    $checkmk=$user->updatePass($email,$passnew);
+                    if($checkmk!==false)
+                    {
+                        echo '<script>
+                        Swal.fire({
+                            position: "top-center",
+                            icon: "success",
+                            title: "Thay Đổi Mật Khẩu Thành Công",
+                            showConfirmButton: false,
+                            timer: 1000
+                          })
+                          setTimeout(function() {
+                            window.location.href = "./index.php";
+                        }, 900); // Chuyển hướng sau 10 giây;;
+                        </script>';
+                        // echo '<script> alert("Thay Đổi Mật Khẩu Thành Công");</script>';
+                       // echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
+                    }
+                    else
+                    {
+                        echo '<script>
+                        Swal.fire({
+                            position: "top-center",
+                            icon: "success",
+                            title: "Thay Đổi Mật Khẩu Không Thành Công",
+                            showConfirmButton: false,
+                            timer: 1000
+                          })
+                          setTimeout(function() {
+                            window.location.href = "./index.php?action=forget&act=forgetpasss";
+                        }, 900); // Chuyển hướng sau 10 giây;;
+                        </script>';
+                        // echo '<script> alert("Thay Đổi Mật Khẩu ko Thành Công");</script>';
+                        //echo '<meta http-equiv="refresh" content="0;url=./index.php?action=forget&act=forgetpasss" />';
+                    }
                     // unset($_SESSION['email']); // Xóa session email sau khi đã sử dụng
                     // unset($_SESSION['code']); // Xóa session code sau khi đã sử dụng
-                    echo '<script> alert("Thay Đổi Mật Khẩu Thành Công");</script>';
-                    echo '<meta http-equiv="refresh" content="0;url=./index.php" />';
+                   
                     // var_dump($passnew);
     
                 }

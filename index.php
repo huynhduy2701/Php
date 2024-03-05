@@ -79,7 +79,7 @@ body {
     <?php
     include_once 'View/header.php';
      if (!isset($_GET['act'])||$_GET['act']=='home'||!isset($_GET['action'])=='thongtin') { 
-       include_once 'View/nav.php';
+      include_once 'View/nav.php';
     }
    
     ?>

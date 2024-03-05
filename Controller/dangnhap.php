@@ -55,18 +55,18 @@ switch ($act) {
                     </script>';
                 
             } else {
-                echo '<script>
-                Swal.fire({
-                    position: "top-end",
-                    icon: "error",
-                    title: "Đăng Nhập Thất Bại",
-                    showConfirmButton: false,
-                    timer: 1000
-                  })
-                  setTimeout(function() {
-                    window.location.href = "./index.php?action=dangnhap";
-                }, 1000); // Chuyển hướng sau 10 giây;
-                </script>';
+                // echo '<script>
+                // Swal.fire({
+                //     position: "top-end",
+                //     icon: "error",
+                //     title: "Đăng Nhập Thất Bại",
+                //     showConfirmButton: false,
+                //     timer: 1000
+                //   })
+                //   setTimeout(function() {
+                //     window.location.href = "./index.php?action=dangnhap";
+                // }, 1000); // Chuyển hướng sau 10 giây;
+                // </script>';
                 // echo '<meta http-equiv="refresh" content="0;url=./index.php?action=dangnhap" />';
             }
         }
