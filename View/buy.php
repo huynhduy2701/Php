@@ -120,20 +120,20 @@
     <div class="col-md-6">
         <div class="mb-3">
             <label for="input1" class="form-label">Số Điện Thoại</label>
-            <input type="number" name="field1" value="<?php echo isset($_SESSION['sodt'])? $_SESSION['sodt'] :'' ;?>" id="input1" class="form-control" placeholder="Nhập Số Điện Thoại" aria-describedby="helpId1" />
+            <input type="number" name="field3" value="<?php echo isset($_SESSION['sodt'])? $_SESSION['sodt'] :'' ;?>" id="input1" class="form-control" placeholder="Nhập Số Điện Thoại" aria-describedby="helpId1" />
             <!-- <small id="helpId1" class="text-muted">Help text for Field 1</small> -->
         </div>
     </div>
     <div class="col-md-6">
         <div class="mb-3">
             <label for="input2" class="form-label">Email</label>
-            <input type="email" name="field2" value="<?php echo isset($_SESSION['email'])? $_SESSION['email'] :'' ;?>" id="input2" class="form-control" placeholder="Nhập Email" aria-describedby="helpId2" />
+            <input type="email" name="field4" value="<?php echo isset($_SESSION['email'])? $_SESSION['email'] :'' ;?>" id="input2" class="form-control" placeholder="Nhập Email" aria-describedby="helpId2" />
             <!-- <small id="helpId2" class="text-muted">Help text for Field 2</small> -->
         </div>
     </div>
       <div class="mb-3">
         <label for="input2" class="form-label">Địa chỉ</label>
-      <textarea name="" id="" cols="30" value="" rows="10" class="form-control"><?php echo isset($_SESSION['diachi'])? $_SESSION['diachi'] :'' ;?></textarea>
+      <textarea  id="" cols="30" value="" name="field5" rows="10" class="form-control"><?php echo isset($_SESSION['diachi'])? $_SESSION['diachi'] :'' ;?></textarea>
         <!-- <small id="helpId2" class="text-muted">Help text for Field 2</small> -->
     </div>
     <div class="mb-3">

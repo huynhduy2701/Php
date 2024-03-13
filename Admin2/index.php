@@ -50,7 +50,8 @@ spl_autoload_register ('myModelLoader');
         <!-- phan thân -->
         <div class="container mt-5">
    
-    
+            <div class="">
+                
         <?php
              //load controler
             $ctrl="dangnhap";
@@ -62,6 +63,7 @@ spl_autoload_register ('myModelLoader');
         //end controller
             
         ?>
+            </div>
      
         <!-- end menu right -->
     </div>

@@ -89,9 +89,15 @@
          Quản Trị Danh Mục
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="index.php?action=loai">Loại Sản Phẩm</a></li>
-            <li><a class="dropdown-item" href="#">Sản Phẩm</a></li>
-            <li><a class="dropdown-item" href="#">Danh Mục</a></li>
+            <li>
+              <a class="dropdown-item" href="index.php?action=chitiet&act=danh-sach-chi-tiet">Chi Tiết Sản Phẩm</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="index.php?action=hanghoa&act=hanghoa">
+                Sản Phẩm
+              </a>
+            </li>
+            <li><a class="dropdown-item"  href="index.php?action=loai">Danh Mục</a></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
@@ -100,7 +106,7 @@
          Thống Kê
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Sản Phẩm Bán Được Nhiều Nhất</a></li>
+            <li><a class="dropdown-item" href="index.php?action=ThongKe&act=BanNhieuNhat">Sản Phẩm Bán Được Nhiều Nhất</a></li>
             <li><a class="dropdown-item" href="#">Sản Phẩm Bán Ít Nhất</a></li>
             <li><a class="dropdown-item" href="#">Thống Kê</a></li>
             <li><hr class="dropdown-divider"></li>

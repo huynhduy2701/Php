@@ -40,12 +40,12 @@
                     Swal.fire({
                         position: "top-center",
                         icon: "error",
-                        title: "Đăng Nhập Thành Công",
+                        title: "Đăng Nhập Không Thành Công",
                         showConfirmButton: false,
                         timer: 1000 
                     });
                     setTimeout(function() {
-                        include_once "./View/hanghoa.php";
+                        include_once "./index.php";
                     }, 1000); // Chuyển hướng sau 10 giây
                  </script>';
                 //  include_once "./View/hanghoa.php";

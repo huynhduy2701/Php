@@ -63,11 +63,5 @@
     }
     }
 
-    function prepare($query) {
-        $statement = $this->db->prepare($query);
-        return $statement;
-    }
-    function closeConnection() {
-        $this->db = null;
-    }
+
 ?>

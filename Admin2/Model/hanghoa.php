@@ -33,5 +33,6 @@
             $query="delete from  sanpham where masp='$id'";
             $db->exec($query);
         }
+      
     }
 ?>

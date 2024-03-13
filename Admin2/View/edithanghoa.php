@@ -3,13 +3,14 @@ if (isset($_GET['id'])) {
   # code...
 
   $masp=$_GET['id'];
+  var_dump($_GET['id']);
   //lấy thông tin masp
   $hh = new hanghoa();
   $kq= $hh->getHangHoaId($masp);
   $tensp=$kq['tensp'];
   $mota=$kq['mota'];
   $hinh=$kq['hinh'];
-  $loai=$kq['idMenu'];
+   $loai=$kq['idMenu'];
   $ngaylap=$kq['ngaylap'];
 }
 
@@ -63,13 +64,16 @@ $act=1;
       <tr>
         <td>Hình</td>
         <td>
-         
+<!--          
             <label>
               <img width="50px" height="50px" src="">
-            </label>
+            </label> -->
             Chọn file để upload:
             <!-- <input type="file" name="hinh" id="fileupload" value="<?php if(isset($hinh)) echo $hinh?>" > -->
-            <input type="text" name="hinh" id="fileupload" value="<?php if(isset($hinh)) echo $hinh?>" >
+            <!-- <input type="text" name="hinh" id="fileupload" value="<?php if(isset($hinh)) echo $hinh?>" > -->
+            <img width="50px" height="50px" src="<?php if(isset($hinh)) echo $hinh; ?>">
+          <!-- Thêm một input type=file để cho phép người dùng chọn ảnh -->
+          <input type="file" name="hinh" id="fileupload">
 
          
         </td>
@@ -97,7 +101,7 @@ $act=1;
       </tr>
       <tr>
         <td>Ngày lập</td>
-        <td><input type="text" class="form-control" name="ngaylap" value="<?php if(isset($ngaylap)) echo $ngaylap?>">
+        <td><input type="date" class="form-control" name="ngaylap" value="<?php if(isset($ngaylap)) echo $ngaylap?>">
         </td>
       </tr>
       <tr>

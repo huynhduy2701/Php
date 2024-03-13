@@ -35,12 +35,12 @@
             $result=$db->getList($select);
             return $result;
         }
-        function getBacXiu () {
-            $db= new db();
-            $select="SELECT a.masp, a.tensp, a.hinh,a.url_sp, b.dongia FROM sanpham a, ctsp b WHERE a.masp = b.idsp AND a.url_sp ='bacxiuda' ORDER BY a.masp;";
-            $result=$db->getList($select);
-            return $result;
-        }
+        // function getBacXiu () {
+        //     $db= new db();
+        //     $select="SELECT a.masp, a.tensp, a.hinh,a.url_sp, b.dongia FROM sanpham a, ctsp b WHERE a.masp = b.idsp AND a.url_sp ='bacxiuda' ORDER BY a.masp;";
+        //     $result=$db->getList($select);
+        //     return $result;
+        // }
         function getSanPhamNewPage($start,$limit){
             //b1: kết nối với dữ liệu
             $db= new db();

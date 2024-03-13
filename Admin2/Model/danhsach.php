@@ -18,5 +18,17 @@
             $result = $db->getList($select);
             return $result;
         }
+        function UpdateCategory($id,$menu_name, $idMenu, $menu_url){
+            $db= new connect();
+            $query="UPDATE `menu` SET `menu_name` = '$menu_name', `parent` = '$idMenu', `menu_url` = '$menu_url' WHERE `menu`.`id` = $id;";
+            $db->exec($query);
+
+
+        }
+        function xoaDanhMuc($id) {
+            $db = new connect();
+            $query = "DELETE FROM menu WHERE id = $id";
+            $db->exec($query);
+        }
     }
 ?>
