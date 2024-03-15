@@ -33,6 +33,47 @@
             $query="delete from  sanpham where masp='$id'";
             $db->exec($query);
         }
+        //phương thức tính tổng số lượng mua từng món hàng
+         function getThongKe(){
+            $db = new connect();
+            $select= "SELECT a.masp ,b.tensp,sum(a.soluong) as soluong FROM hoadon a ,sanpham b WHERE a.masp=b.masp GROUP by a.masp,b.tensp;";
+            $result=$db->getList($select);
+            return $result;
+         }
+         function getThongKeTheoNgayNam($thang,$nam){
+            $db = new connect();
+            $select= "SELECT a.masp,a.ngay ,b.tensp,sum(a.soluong) as soluong FROM hoadon a ,sanpham b WHERE a.masp=b.masp AND a.ngay LIKE '$nam-$thang%' GROUP by a.masp,b.tensp";
+            $result=$db->getList($select);
+            return $result;
+         }
+        // function getThongKeTheoNgayNam($thang, $nam){
+        //     $db = new connect();
+        //     $select = "SELECT a.masp, a.ngay, b.tensp, SUM(a.soluong) AS soluong FROM hoadon a, sanpham b WHERE a.masp=b.masp AND a.ngay LIKE '$nam-$thang%' GROUP BY a.masp, b.tensp;";
+        //     $result = $db->getList($select);
+        //     return $result;
+        // }
+         function getThongKeNN(){
+            $db = new connect();
+            $select= "SELECT a.masp, b.tensp, MAX(a.soluong) as soluong 
+            FROM hoadon a
+            INNER JOIN sanpham b ON a.masp = b.masp 
+            GROUP BY a.masp, b.tensp 
+            ORDER BY soluong DESC 
+            LIMIT 1;";
+            $result=$db->getList($select);
+            return $result;
+         }
+         function getThongKeIN(){
+            $db = new connect();
+            $select= "SELECT a.masp, b.tensp, MIN(a.soluong) as soluong 
+            FROM hoadon a
+            INNER JOIN sanpham b ON a.masp = b.masp 
+            GROUP BY a.masp, b.tensp 
+            ORDER BY soluong DESC 
+           ;";
+            $result=$db->getList($select);
+            return $result;
+         }
       
     }
 ?>

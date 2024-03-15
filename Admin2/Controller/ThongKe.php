@@ -11,9 +11,11 @@
     switch ($act) {
         case 'BanNhieuNhat':
             # code...
-            include_once './View/TKBanNhieuNhat.php';
+            include_once './View/thongke.php';
             break;
-        
+        case 'ThongKeTheoThang';
+            include_once './View/TKTHeoThang.php';
+            break;
         default:
             # code...
             break;

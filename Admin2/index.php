@@ -48,9 +48,9 @@ spl_autoload_register ('myModelLoader');
 
         <!-- end hinh dong -->
         <!-- phan thân -->
-        <div class="container mt-5">
-   
-            <div class="">
+        <div class="container mt-5" style="margin-top: 500px;">
+          <br>
+        <div >
                 
         <?php
              //load controler

@@ -174,7 +174,14 @@
             $result= $db->getList($select);
             return $result;
         }
-        
+        function getSanPhamMenu($url){
+            $db = new db();
+            $select = "SELECT a.masp, a.tensp, a.mota, a.idMenu, a.soluotmua, a.hinh, b.id, b.menu_url, b.menu_name, c.idsp, c.dongia
+                       FROM sanpham a, menu b, ctsp c 
+                       WHERE a.masp = c.idsp AND a.idMenu = b.id AND b.menu_url = '$url'";
+            $result = $db->getList($select);
+            return $result;
+        }
         function producttail($id) {
             $db = new db();
             $select = "SELECT a.masp,a.tensp,a.idMenu,a.mota,a.hinh,b.idsp,b.dongia,c.idsize,c.tensize FROM sanpham a, ctsp b, sizesp c WHERE a.masp={$id} AND b.idsp={$id};";

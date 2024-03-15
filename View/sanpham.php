@@ -1,9 +1,11 @@
 <div class="row mt-5">
-    <div class="alert alert-danger my-4 text-center mt-5" role="alert">
+    <!-- <div class="alert alert-danger my-4 text-center mt-5" role="alert">
+        
         <h1><?php echo $pageTitle; ?></h1>
-    </div>
+        
+    </div> -->
 
-    <div class="row d-flex justify-content-end mb-2">
+    <div class="row d-flex justify-content-end mb-2 mt-5">
         <div class="col-md-8">
             <!-- Đoạn mã tìm kiếm và lọc -->
             <input type="text" class="form-control" style="width: 200px; display: inline-block; margin-right: 10px;">
@@ -46,7 +48,8 @@
             $chuoi_thuong = mb_strtolower($chuoi, 'UTF-8');
             $chuoi_thuong = str_replace(' ', '-', $chuoi_thuong);
     ?>
-
+   
+    <!-- <h1>  <?php echo $set['menu_name'] ?></h1> -->
             <div class="card mb-5 mx-2">
                 <a href="./index.php?action=sanpham&act=productdetail&id=<?= $set['masp']; ?>">
                 <img src="Content/img/<?php echo $set['hinh'] ?>" class="img-fluid align-items-center" alt="" style="width: 162px; height: 170px; margin: auto; display: flex;"><path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path></svg>

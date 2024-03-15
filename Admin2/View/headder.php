@@ -101,13 +101,16 @@
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?action=binhluan">Bình Luận</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
          Thống Kê
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="index.php?action=ThongKe&act=BanNhieuNhat">Sản Phẩm Bán Được Nhiều Nhất</a></li>
-            <li><a class="dropdown-item" href="#">Sản Phẩm Bán Ít Nhất</a></li>
+            <li><a class="dropdown-item" href="index.php?action=ThongKe&act=BanNhieuNhat">Sản Phẩm Bán Được </a></li>
+            <li><a class="dropdown-item" href="index.php?action=ThongKe&act=ThongKeTheoThang">Thống Kê Theo Tháng</a></li>
             <li><a class="dropdown-item" href="#">Thống Kê</a></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
