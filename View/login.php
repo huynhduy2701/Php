@@ -22,7 +22,7 @@
                         <input type="password" id="typePasswordX"  name="txtpass" class="form-control form-control-lg" />
                       </div>
         
-                      <p class="small mb-5 pb-lg-2"><a class="text-black-50" href="index.php?action=forget">Forgot password?</a></p>
+                      <p class="small mb-5 pb-lg-2"><a class="text-black-50" href="index.php?action=forgett">Forgot password?</a></p>
         
                       <button class="btn btn-primary btn-lg px-5" type="submit" name="submit">Login</button>
         

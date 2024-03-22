@@ -5,7 +5,7 @@
         <a class="btn btn-primary" href="index.php?action=chitiet&act=add_chitiet">Thêm Danh Mục</a>
         </div>
    </div>
-   <table class="table table-hover">
+   <table class="table table-hover shadow-lg p-3 mb-5 bg-body-tertiary rounded">
 
         <thead>
             <th>ID</th>

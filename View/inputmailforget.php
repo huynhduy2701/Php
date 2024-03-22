@@ -26,7 +26,7 @@
                 </div>
               </div>
             </form> -->
-            <form action="index.php?action=forget&act=forget_action" method="post">
+            <form action="index.php?action=forgett&act=forget_action" method="post">
     <div class="row gy-3 gy-md-4 overflow-hidden">
       <div class="col-12">
         <label for="email" class="form-label">Email <span class="text-danger">*</span></label>

@@ -102,7 +102,13 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?action=binhluan">Bình Luận</a>
+          <a class="nav-link" href="index.php?action=binhluan&act=danh-sach-binh-luan">Bình Luận</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?action=donhang&act=danh-sach-don-hang">Đơn Hàng</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?action=thanhvien&act=danh-sach-thanh-vien">Thành Viên</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -111,7 +117,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="index.php?action=ThongKe&act=BanNhieuNhat">Sản Phẩm Bán Được </a></li>
             <li><a class="dropdown-item" href="index.php?action=ThongKe&act=ThongKeTheoThang">Thống Kê Theo Tháng</a></li>
-            <li><a class="dropdown-item" href="#">Thống Kê</a></li>
+            <!-- <li><a class="dropdown-item" href="#">Thống Kê</a></li> -->
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>

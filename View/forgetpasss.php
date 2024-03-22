@@ -33,7 +33,7 @@
                   </div>
 
                 </form> -->
-                <form class="mx-1 mx-md-4" action="index.php?action=forget&act=forgetpass_action" method="post">
+                <form class="mx-1 mx-md-4" action="index.php?action=forgett&act=forgetpass_action" method="post">
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
@@ -48,7 +48,7 @@
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                      <input type="password" placeholder="Nhập lại password mới" id="form3Example4cd" class="form-control" />
+                      <input type="password" placeholder="Nhập lại password mới" name="passwordNew2" id="form3Example4cd" class="form-control" />
                     </div>
                   </div>
 

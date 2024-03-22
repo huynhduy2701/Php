@@ -183,7 +183,7 @@
     
                 // Đưa đối tượng vào giỏ hàng
                 $_SESSION['cart'][] = $item;
-                var_dump($note);
+                // var_dump($note);
             }
         } else {
             // Xử lý trường hợp có vấn đề khi truy xuất dữ liệu

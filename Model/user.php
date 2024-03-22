@@ -20,7 +20,7 @@
         function loginUser($user,$pass){
             $db=new db();
             $select="SELECT a.idUser ,a.TenKh,a.HoKh,a.email,a.diachi,a.sodt,a.username	,a.matkhau FROM user a WHERE a.username='$user' AND a.matkhau='$pass'";
-            echo $select;
+            // echo $select;
             $result= $db->getList($select);
             // echo $result;
             return $result;
@@ -34,7 +34,7 @@
             return $result;
         }
         //phương thức update pass khi biết email
-        function updatePass($email, $passnew)  {
+        function updatePass($email,$passnew)  {
             $db= new db();
             $query="UPDATE user SET matkhau='$passnew' WHERE email ='$email'";
             echo $query;

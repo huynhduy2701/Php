@@ -23,7 +23,7 @@ switch ($act) {
             // Xử lý thêm sản phẩm vào giỏ hàng ở đây
             include_once "./Model/giohang.php";
             $gh = new giohang();
-            $gh->addGioHang($id, $idSize, $idsoluong, $note);
+            $gh->addGioHang($id, $idSize, $idsoluong,$note);
             echo '<script>
             Swal.fire({
                 position: "top-center",
@@ -33,7 +33,7 @@ switch ($act) {
                 timer: 1000 
             });
             setTimeout(function() {
-                window.location.href = "./index.php?action=giohang";
+                window.location.href = "./index.php?action=sanpham&act=productdetail&id='.$id.'";
             }, 1000); // Chuyển hướng sau 10 giây
         </script>';
             // echo '<meta http-equiv="refresh" content="0;url=./index.php?action=giohang" />';

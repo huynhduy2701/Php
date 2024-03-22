@@ -23,10 +23,10 @@ session_start();
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here" />
+    <meta name="Description" content="Nguyễn Lê Huỳnh Duy" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./Content/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./Content/index.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -49,12 +49,11 @@ session_start();
 		<link href="./Content/css/style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
+    <link rel="icon" href="./Content/img/logo.jpg">
         <title>Cà Phê</title>
 </head>
 <style>
-  body{
-   
-}
+  
 .btn-danger{
    background-color:#b22830 ;
    border:none
@@ -75,8 +74,8 @@ body {
 
  <!-- header -->
 
- 
-    <?php
+ <div>
+ <?php
     include_once 'View/header.php';
      if (!isset($_GET['act'])||$_GET['act']=='home'||!isset($_GET['action'])=='thongtin') { 
       include_once 'View/nav.php';
@@ -84,6 +83,8 @@ body {
    
     ?>
 
+ </div>
+  
     
     <!-- hiên thi noi dung -->
       <div class="container">
@@ -124,7 +125,7 @@ body {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 
-<script src="js/bootstrap.bundle.min.js"></script>
+<!-- <script src="./Content/js/bootstrap.bundle.min.js"></script> -->
 		<script src="./Content/js/tiny-slider.js"></script>
 		<script src="./Content/js/custom.js"></script>
 </body>

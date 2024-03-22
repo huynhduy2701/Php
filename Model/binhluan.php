@@ -2,7 +2,7 @@
     class binhluan{
         function thembl( $iduser,$masp,$noidung) {
             $db = new db();
-            $query = "INSERT INTO binhluan (id, idUser, noidung, postdate, masp) VALUES (NULL, ' $iduser', ',$noidung', NULL, '$masp')";
+            $query = "INSERT INTO binhluan (id, idUser, noidung, postdate, masp) VALUES (NULL, ' $iduser', '$noidung', NULL, '$masp')";
             $result=$db->exec( $query);
             return $result;
         }

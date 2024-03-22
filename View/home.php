@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             # code...
         ?>
             <!--Grid column-->
-            <div class="col-lg-3 col-md-4 mb-3 text-left mt-5 ">
+            <div class="col-lg-3 col-md-4  text-left mt-2 ">
                 <?php
                 $chuoi = $set['tensp'];
                 $chuoi_thuong = mb_strtolower($chuoi, 'UTF-8');

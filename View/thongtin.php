@@ -27,6 +27,7 @@
                         <th>Số Lượng</th>
                         <th>Đơn Giá</th>
                         <th>Phương Thức Thanh Toán</th>
+                        <th>Ghi Chú</th>
                         <th>Trạng Thái</th>
                     </tr>
                </thead>
@@ -35,10 +36,11 @@
                <?php
                     // Kiểm tra nếu có dữ liệu được truyền từ controller
                     if (!empty($data)) {
-                        var_dump($data); // Hiển thị dữ liệu để kiểm tra
+                        // var_dump($data); // Hiển thị dữ liệu để kiểm tra
                         $stt = 1; // Biến đếm số thứ tự
                         // Lặp qua mảng dữ liệu để hiển thị thông tin
                         foreach ($data as $row) {
+                            // var_dump($data);
                     ?>
                             <tr>
                                 <td><?php echo $stt; ?></td>
@@ -47,6 +49,16 @@
                                 <td><?php echo $row['soluong']; ?></td>
                                 <td><?php echo $row['dongia']; ?></td>
                                 <td><?php echo $row['tenthanhtoan']; ?></td>
+                                <td>
+                                    <?php
+                                    if ($row['ghichu']=="") {
+                                        # code...
+                                        echo "KHÔNG CÓ GHI CHÚ";
+                                    }
+                                     echo $row['ghichu']; 
+                                     ?>
+                                </td>
+                                <td><span class="badge text-bg-success"><?php echo $row['trangthai'] ?></span></td>
                             </tr>
                     <?php
                             $stt++; // Tăng số thứ tự lên sau mỗi lần lặp

@@ -14,7 +14,7 @@
         # code...
     }
 ?>
-      <div class="card mt-5  ">
+      <div class="card mt-5  shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-header info">
           <h1 class="text-center text-primary">Tạo Danh Mục</h1>
         </div>
@@ -24,7 +24,7 @@
       <input type="file" name="file">
       <input type="submit" value="Import" name="submit_file">
     </form>
-    <form action="index.php?action=loai&act=loai_action" method="post">
+    <form action="index.php?action=loai&act=loai_action" method="post" class="">
             <div class="form-group">
                 <label for="">Mã danh mục</label>
                 <input type="text" readonly name="id" class="form-control" >

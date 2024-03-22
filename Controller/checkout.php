@@ -25,11 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_checkout'])) {
                     $soluong = $item2['soluong'];
                     $dongia = $item2['dongia'];
                     $thanhtien = $item2['thanhtien'];
+                    $note=$item2['note'];
                  
     
                     // Kiểm tra xem 'thanhtoan' có được đặt trong $_POST trước khi truy cập
                     $idthanhtoan = isset($_POST['thanhtoan']) ? $_POST['thanhtoan'] : null;
-                    $insert= $ck->getHoadon( $idUser,$masp, $idsize,$soluong, $dongia, $thanhtien, $idthanhtoan);
+                    $insert= $ck->getHoadon( $idUser,$masp, $idsize,$soluong, $dongia, $thanhtien, $idthanhtoan,$note);
                    
                     
                     unset($_SESSION['cart']);

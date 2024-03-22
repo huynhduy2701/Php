@@ -1,11 +1,12 @@
 <?php
     class checkout{
    
-        function getHoadon($idUser, $masp, $idsize, $soluong, $dongia, $thanhtien, $idthanhtoan) {
+        function getHoadon($idUser, $masp, $idsize, $soluong, $dongia, $thanhtien, $idthanhtoan,$note) {
             $db = new db();
+            $status="Đặt Thành Công";
             $ngayHienTai = date('Y-m-d '); // Lấy ngày hiện tại từ PHP
-            $query = "INSERT INTO `hoadon` (`mahoadon`, `idUser`, `masp`, `idsize`, `soluong`, `dongia`, `thanhtien`, `idthanhtoan`,`ngay`) 
-                      VALUES (NULL, $idUser, '$masp', '$idsize', $soluong, $dongia, $thanhtien, $idthanhtoan,'$ngayHienTai');";
+            $query = "INSERT INTO `hoadon` (`mahoadon`, `idUser`, `masp`, `idsize`, `soluong`, `dongia`, `thanhtien`, `idthanhtoan`,`ngay`,`ghichu`,`trangthai`) 
+                      VALUES (NULL, $idUser, '$masp', '$idsize', $soluong, $dongia, $thanhtien, $idthanhtoan,'$ngayHienTai','$note','$status');";
             $result = $db->exec($query);
             return $result;
           

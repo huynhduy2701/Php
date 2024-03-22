@@ -16,7 +16,7 @@
 </div>
 </div>
 <div class="row">
-<table class="table table-hover">
+<table class="table table-hover shadow-lg p-3 mb-5 bg-body-tertiary rounded">
     <thead>
       <tr class="table-primary ">
         <th>Mã hàng</th>

@@ -11,17 +11,21 @@ if (isset($_SESSION['idUser'])) {
         $idUser = $_SESSION['idUser'];
         $masp=$_POST['idsp'];
         $noidung=$_POST['noidung'];
-        $thembl = $bl->thembl($idUser, $masp, $noidung);
+        $thembl = $bl->thembl($idUser,$masp,$noidung);
         echo '<script>
         Swal.fire({
-            position: "top-end",
+            position: "top-center",
             icon: "success",
             title: "Bình Luận Thành Công",
             showConfirmButton: false,
-            timer: 100000
+            timer: 50000
           });
+          setTimeout(function() {
+            window.location.href = "./index.php?action=sanpham&act=productdetail&id='.$masp.'";
+        }, 1000); // Chuyển hướng sau 10 giây
         </script>';
-        echo '<meta http-equiv="refresh" content="0" />';
+        
+      
     }
   
     

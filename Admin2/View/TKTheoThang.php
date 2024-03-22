@@ -14,7 +14,7 @@
     }
 ?>
 
-<div class="mt-5">
+<div class="mt-5 shadow p-3 mb-5 bg-body-tertiary rounded">
     <form action="" method="post">
         <div class="">
             <h1 class="text-center text-primary">Vui Lòng Chọn Để Xem Thống Kê</h1>
@@ -73,7 +73,7 @@
 
         var options = {
             title: "THỐNG KÊ SỐ LƯỢNG BÁN",
-            'width': 600,
+            'width': 500,
             "height": 500,
             "backgroundColor": "#fffffff",
             is3D: true
@@ -85,6 +85,6 @@
 </script>
 
 <div class="thongke">
-    <div style="width:50%; float: left;" id="chart_div">dfsf</div>
-    <div style="width:50%; float: right" id="chart_div1">dsfd</div>    
+    <div style="width:50%; float: left;" id="chart_div" class="shadow p-3 mb-5 bg-body-tertiary rounded" >dfsf</div>
+    <!-- <div style="width:50%; float: right" id="chart_div1">dsfd</div>     -->
 </div>

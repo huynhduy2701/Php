@@ -50,7 +50,7 @@
 
 
 
-   <style>
+   <!-- <style>
     @media (max-width: 576px) {
   .menu_nav {
     flex-direction: column;
@@ -83,4 +83,44 @@
     display: none;
   }
 }
-   </style>
+@media (max-width: 912px) {
+        .menu_nav li ul.dropdown {
+            display: none;
+            position: static;
+            width: auto;
+            background: transparent;
+            padding: 0;
+            margin-left: 20px; /* Adjust margin for dropdown */
+        }
+
+        .menu_nav li:hover > ul.dropdown {
+            display: block;
+            position: static;
+            width: auto;
+            background: transparent;
+            padding: 0;
+            margin-left: 20px; /* Adjust margin for dropdown */
+        }
+    }
+   </style> -->
+   <style>
+    @media (max-width: 912px) {
+        .menu_nav li ul.dropdown {
+            display: none;
+            position: static;
+            width: auto;
+            background: transparent;
+            padding: 0;
+            margin-left: 20px; /* Adjust margin for dropdown */
+        }
+
+        .menu_nav li:hover > ul.dropdown {
+            display: block;
+            position: static;
+            width: auto;
+            background: transparent;
+            padding: 0;
+            margin-left: 20px; /* Adjust margin for dropdown */
+        }
+    }
+</style>

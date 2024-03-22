@@ -40,7 +40,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                     foreach ($_SESSION['cart'] as $key => $item) :
                         $j++;
                         $totalAmount += $item['dongia'] * $item['soluong'];
-                        // var_dump($_SESSION['cart'])
+                        var_dump($_SESSION['cart'])
                     ?>
                         <tr>
                             
@@ -81,6 +81,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                     </tr>
                 </tbody>
             </table>
+            
         </form>
         <?php endif; ?>
 

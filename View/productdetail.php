@@ -109,7 +109,7 @@
     <?php
    
     if (isset($_SESSION['idUser']) && isset($_SESSION['username']) && isset($_SESSION['idUser']) > 0):
-        var_dump($_SESSION['idUser']);
+        // var_dump($_SESSION['idUser']);
 ?>
 
 <form action="index.php?action=binhluan" method="post">
@@ -139,7 +139,7 @@
     ?>
     
     <p> <?php echo $set['username_b']?> : </p>
-    <span><?php echo $set['noidung_a']?> </span> 
+    <span><?php echo $set['noidung_a']?></span> 
     <hr>
     <?php
         endwhile;
