@@ -30,6 +30,44 @@ switch ($act) {
         }
         break;
   
+        case 'chinh-sua-binh-luan':
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $db = new binhluan();
+                $binhLuan = $db->getCMT($id);
+                // Kiểm tra nếu bình luận tồn tại
+                if ($binhLuan) {
+                    include_once './View/editbinhluan.php';
+                } 
+            }
+            break;
+        case 'cap-nhat-binh-luan';
+          
+                # code...
+                if (isset($_POST['submit'])) {
+                    $id=$_POST['id'];
+                    // echo($id);
+                    # code...
+                    $noidung=$_POST['noidung'];
+                    $db= new binhluan();
+                    $UpdateCMT=$db->UpdateBinhLuan($id,$noidung);
+                    // echo "<script>alert('aaa')</script>";
+                    echo '<script>
+                    Swal.fire({
+                        position: "top-center",
+                        icon: "success",
+                        title: "Cập Nhật Bình Luận Thành Công",
+                        showConfirmButton: false,
+                        timer: 1000 
+                    });
+                    setTimeout(function() {
+                        window.location.href = "./index.php?action=binhluan&act=danh-sach-binh-luan";
+                    }, 1000); // Chuyển hướng sau 10 giây
+                </script>';
+                }
+            
+        break;
+
 
     default:
         // Nếu action không hợp lệ, hiển thị trang mặc định hoặc thông báo lỗi

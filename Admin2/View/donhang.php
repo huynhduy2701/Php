@@ -29,6 +29,9 @@
       <td><?php echo $set['pttt_tenthanhtoan']  ?></td>
       <td><?php echo $set['ghichu']  ?></td>
       <td><?php echo $set['trangthai']  ?></td>
+      <td>
+        <a href="">sửa</a>
+      </td>
       
       
     </tr>

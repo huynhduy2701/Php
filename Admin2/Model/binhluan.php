@@ -12,5 +12,17 @@
             $result = $db->exec($query);
             return $result; // Trả về kết quả sau khi thực hiện truy vấn
         }
+        public function getCMT($id) {
+            $db= new connect();
+            $select="SELECT a.id,a.idUser ,a.noidung,a.masp ,b.tensp,c.username FROM binhluan a ,sanpham b ,user c WHERE a.id=$id and a.idUser=c.idUser and a.masp=b.masp";
+            $result=$db->getList($select);
+            return $result;
+        }
+        public function UpdateBinhLuan($id,$noidung){
+            $db= new connect();
+            $select="UPDATE `binhluan` SET `noidung` = '$noidung' WHERE `binhluan`.`id` = $id";
+            $result=$db->exec($select);
+            return $result;
+        }
     }
 ?>

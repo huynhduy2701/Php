@@ -11,7 +11,7 @@
         JOIN sanpham b ON a.masp = b.masp
         JOIN sizesp c ON a.idsize = c.idsize
         JOIN pttt d ON a.idthanhtoan = d.idthanhtoan
-        JOIN user e ON a.idUser = e.idUser;";
+        JOIN user e ON a.idUser = e.idUser  ; ";
         $result=$db->getList($select);
         return $result;
         }

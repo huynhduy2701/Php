@@ -28,7 +28,8 @@
       <td><?php echo $set['noidung']?></td>
       <td><a href="../index.php?action=sanpham&act=productdetail&id=<?= $set['masp']; ?> " target="../index.php?action=sanpham&act=productdetail&id=<?= $set['masp']; ?>">Click Tới Bài Viết</a></td>
       <td>
-        <a href="../index.php?action=sanpham&act=productdetail&id=<?= $set['masp']; ?> "  class="btn btn-primary btn-sm">Sửa</a>
+        <input type="hidden" value="<?= $set['id']; ?>">
+        <a href="./index.php?action=binhluan&act=chinh-sua-binh-luan&id=<?= $set['id']; ?> "  class="btn btn-primary btn-sm">Sửa</a>
           <a onclick="confirmDelete(<?php echo $set['id'] ?>)"  class="btn btn-danger btn-sm">Xóa</a>
       </td>
     </tr>
