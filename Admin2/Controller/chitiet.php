@@ -22,8 +22,10 @@
                 $Insert = $db->getInsCTSP($idSp, $idSize, $dongia, $giamGia);
                 if ($Insert) {
                     echo "<script>alert('Dữ liệu đã được thêm thành công.')</script>";
+                    include_once "./View/viewCTSP.php";
                 } else {
                     echo "<script>alert('Đã xảy ra lỗi khi thêm dữ liệu.')</script>";
+                    include_once "./View/productdetail.php";
                 }
             }
             break;

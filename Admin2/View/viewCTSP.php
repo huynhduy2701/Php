@@ -43,8 +43,8 @@
                 </td>
                 <td>
                 <input type="hidden" name="delete_id" value="<?php echo $set['idsp']; ?>">
-                <button type="button" onclick="confirmDelete()" class="btn btn-danger">Xóa</button>
-
+                <!-- <button type="button" onclick="confirmDelete()" class="btn btn-danger">Xóa</button> -->
+                <button type="button" onclick="confirmDelete(<?php echo $set['idsp']; ?>)" class="btn btn-danger">Xóa</button>
                 <a href="index.php?action=chitiet&act=sua_chitiet&id=<?php echo $set['idsp'] ?>" class="btn btn-primary">Sửa</a>
                 </td>
             </tr>

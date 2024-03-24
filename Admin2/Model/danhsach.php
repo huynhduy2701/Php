@@ -27,7 +27,7 @@
         }
         function xoaDanhMuc($id) {
             $db = new connect();
-            $query = "DELETE FROM menu WHERE id = $id";
+            $query = "DELETE FROM ctsp WHERE idsp = $id";
             $db->exec($query);
         }
     }
